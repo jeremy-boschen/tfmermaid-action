@@ -1,6 +1,14 @@
 #!/bin/sh
 
+set -eou pipefail
+
 temp=$(mktemp $1.XXXXXXXXXX)
 
-terraform graph | node $(dirname $0)/index.mjs $1 $2 > $temp
+graph_args=
+if [[ -n "$3" ]]; then
+  graph_args="-plan=$3"
+fi
+
+terraform graph $graph_args | node $(dirname $0)/index.mjs $1 $2 > $temp
+
 mv $temp $1
