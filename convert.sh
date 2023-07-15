@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -eou pipefail
+set -euo
 
 temp=$(mktemp $1.XXXXXXXXXX)
 
