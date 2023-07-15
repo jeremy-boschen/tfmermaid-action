@@ -5,7 +5,7 @@ set -euo pipefail
 temp=$(mktemp $1.XXXXXXXXXX)
 
 graph_args=
-if [[ -n "$3" ]]; then
+if [[ -n "${3-}" ]]; then
   graph_args="-plan=$3"
 fi
 
