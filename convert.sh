@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-set -euo
+set -euo pipefail
 
 temp=$(mktemp $1.XXXXXXXXXX)
 
