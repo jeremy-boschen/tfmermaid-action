@@ -41,6 +41,9 @@ inputs:
   working-directory:
     description: Working directory.
     default: ./
+  plan-file:
+    description: An existing terraform plan file
+    required: false
 runs:
   using: composite
   steps:
@@ -50,7 +53,7 @@ runs:
     - uses: hashicorp/setup-terraform@v2
       with:
         terraform_wrapper: false
-    - run: ${{ github.action_path }}/convert.sh ${{ inputs.file }} ${{ inputs.label }}
+    - run: ${{ github.action_path }}/convert.sh ${{ inputs.plan-file }} ${{ inputs.file }} ${{ inputs.label }}
       env:
         ORIENTATION: ${{ inputs.orientation }}
         ARROW_DIRECTION: ${{ inputs.arrow-direction }}
