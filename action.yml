@@ -50,10 +50,7 @@ runs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
-    - uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_wrapper: false
-    - run: ${{ github.action_path }}/convert.sh ${{ inputs.plan-file }} ${{ inputs.file }} ${{ inputs.label }}
+    - run: ${{ github.action_path }}/convert.sh ${{ inputs.file }} ${{ inputs.label }} ${{ inputs.plan-file }}
       env:
         ORIENTATION: ${{ inputs.orientation }}
         ARROW_DIRECTION: ${{ inputs.arrow-direction }}
